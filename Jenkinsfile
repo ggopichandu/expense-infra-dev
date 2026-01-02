@@ -18,10 +18,9 @@ pipeline {
                   terraform init -reconfigure
                 """
             }
-        }
-    }    
+        }    
         stage('Plan') {
-            when{
+            when {
                 expression{
                     params.action == 'Apply'
                 }
@@ -34,10 +33,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when{
+            when {
                 expression{
                     params.action == 'Apply'
                 }
+            }    
             input {
                 message "Should we continue?"
                 ok "Yes, we should."
@@ -49,12 +49,13 @@ pipeline {
                 """
             }
         }
-    }    
+
         stage('Destroy') {   
-            when{
+            when {
                 expression{
                     params.action == 'Destroy'
-                } 
+                }
+            }     
             steps {
                 sh """
                 cd 01-vpc
