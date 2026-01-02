@@ -19,6 +19,7 @@ pipeline {
                 """
             }
         }
+    }    
         stage('Plan') {
             when{
                 expression{
@@ -48,6 +49,7 @@ pipeline {
                 """
             }
         }
+    }    
         stage('Destroy') {   
             when{
                 expression{
@@ -73,4 +75,3 @@ pipeline {
             echo 'I will run when pipeline is failure'
         }
     }
-}
