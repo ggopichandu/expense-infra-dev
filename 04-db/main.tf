@@ -192,7 +192,7 @@ module "db" {
   )
 
   manage_master_user_password = true
-  #password = "ExpenseApp1"
+  password = "ExpenseApp1"
   skip_final_snapshot = true
 
   parameters = [
