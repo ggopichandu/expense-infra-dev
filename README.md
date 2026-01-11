@@ -29,6 +29,7 @@ The -target flag is used to apply or destroy only specific resources in a Terraf
 **Command**: You can specify a target using:
 
 terraform apply -target=<resource>
+
 **Effect**:
 
 Terraform will only manage the targeted resource and ignore others during the plan and apply phases. This can be useful when you are debugging or deploying just a part of your infrastructure.
