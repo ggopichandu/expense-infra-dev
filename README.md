@@ -9,7 +9,7 @@
 
 Tainting a resource marks it for recreation during the next terraform apply operation. This is useful when you want to forcefully destroy and recreate a resource without changing its configuration.
 
-**Command**: You can taint a resource using:
+Command: You can taint a resource using:
 
   terraform taint <resource>
 
@@ -26,7 +26,7 @@ When you taint a resource that has dependencies (other resources rely on it), th
 
 The -target flag is used to apply or destroy only specific resources in a Terraform configuration, bypassing others.
 
-**Command**: You can specify a target using:
+Command: You can specify a target using:
 
    terraform apply -target=<resource>
 
