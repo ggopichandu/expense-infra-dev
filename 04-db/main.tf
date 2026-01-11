@@ -67,6 +67,7 @@
 
 module "db" {
   source = "terraform-aws-modules/rds/aws"
+  version = "~> 5.0"
 
   identifier = "${var.project_name}-${var.environment}"
 
@@ -79,9 +80,7 @@ module "db" {
   username = "root"
   port     = "3306"
   password = "ExpenseApp1"
-  manage_master_user_password = false
   skip_final_snapshot = true
-
   vpc_security_group_ids = [data.aws_ssm_parameter.db_sg_id.value]
 
   # DB subnet group
@@ -146,7 +145,7 @@ module "db" {
 
   records = [
     {
-      name    = "db-${var.environment}"
+      name    = "mysql-${var.environment}"
       type    = "CNAME"
       ttl = 1
       allow_overwrite = true
