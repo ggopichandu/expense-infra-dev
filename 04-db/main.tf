@@ -160,12 +160,14 @@
 
 module "db" {
   source = "terraform-aws-modules/rds/aws"
+  
+  version = "~> 6.0"
   identifier = "${var.project_name}-${var.environment}" #expense-dev
 
   engine            = "mysql"
   engine_version    = "8.0"
   instance_class    = "db.t3.micro"
-  allocated_storage = 5
+  allocated_storage = 20
 
   db_name  = "transactions" #default schema for expense project
   username = "root"
@@ -189,8 +191,8 @@ module "db" {
     }
   )
 
-  manage_master_user_password = false
-  password = "ExpenseApp1"
+  manage_master_user_password = true
+  #password = "ExpenseApp1"
   skip_final_snapshot = true
 
   parameters = [
@@ -204,22 +206,22 @@ module "db" {
     }
   ]
 
-  options = [
-    {
-      option_name = "MARIADB_AUDIT_PLUGIN"
+  # options = [
+  #   {
+  #     option_name = "MARIADB_AUDIT_PLUGIN"
 
-      option_settings = [
-        {
-          name  = "SERVER_AUDIT_EVENTS"
-          value = "CONNECT"
-        },
-        {
-          name  = "SERVER_AUDIT_FILE_ROTATIONS"
-          value = "37"
-        },
-      ]
-    },
-  ]
+  #     option_settings = [
+  #       {
+  #         name  = "SERVER_AUDIT_EVENTS"
+  #         value = "CONNECT"
+  #       },
+  #       {
+  #         name  = "SERVER_AUDIT_FILE_ROTATIONS"
+  #         value = "37"
+  #       },
+  #     ]
+  #   },
+  # ]
  
 }
 
