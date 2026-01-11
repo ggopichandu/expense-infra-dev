@@ -12,27 +12,27 @@ Tainting a resource marks it for recreation during the next terraform apply oper
 Command: You can taint a resource using:
 
 terraform taint <resource>
-Effect:
+**Effect**:
 
 The resource will be destroyed and then recreated, even if there are no configuration changes. This can be useful when a resource becomes corrupted or you want to trigger a fresh start for it.
 
-Dependency Impact:
+**Dependency Impact**:
 
 When you taint a resource that has dependencies (other resources rely on it), those dependent resources might not be destroyed and recreated unless their configuration explicitly changes as a result of the tainted resource being recreated. Terraform will maintain the dependency order but will only recreate the tainted resource unless other dependent resources are also affected indirectly.
 
-Terraform: Target
-Purpose:
+# Terraform: Target
+**Purpose**:
 
 The -target flag is used to apply or destroy only specific resources in a Terraform configuration, bypassing others.
 
-Command: You can specify a target using:
+**Command**: You can specify a target using:
 
 terraform apply -target=<resource>
-Effect:
+**Effect**:
 
 Terraform will only manage the targeted resource and ignore others during the plan and apply phases. This can be useful when you are debugging or deploying just a part of your infrastructure.
 
-Dependency Impact:
+**Dependency Impact**:
 
 This is where it gets tricky. When you use -target on a resource that has dependencies, Terraform might not properly handle the dependent resources. If the target resource depends on something else or has resources depending on it, those dependencies may be missed, leading to a broken or incomplete state.
 
