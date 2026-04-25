@@ -16,7 +16,7 @@ variable "common_tags" {
 }
 
 variable "zone_name" {
-    default = "gopichand.online"
+    default = "lakshith.online"
 }
 
 variable "zone_id" {

@@ -184,6 +184,5 @@ resource "aws_lb_listener_rule" "backend" {
     host_header {
       values = ["backend.app-${var.environment}.${var.zone_name}"]
     }
-
   }
 }  
