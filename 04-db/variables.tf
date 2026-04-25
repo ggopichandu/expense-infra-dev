@@ -27,5 +27,5 @@ variable "db_sg_discription" {
 # }
 
 variable "zone_name" {
-    default = "gopichand.online"
+    default = "lakshith.online"
 }
