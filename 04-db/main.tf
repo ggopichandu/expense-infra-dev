@@ -191,7 +191,7 @@ module "db" {
     }
   )
 
-  manage_master_user_password = true
+  manage_master_user_password = false
   password = "ExpenseApp1"
   skip_final_snapshot = true
 
@@ -206,22 +206,22 @@ module "db" {
     }
   ]
 
-  # options = [
-  #   {
-  #     option_name = "MARIADB_AUDIT_PLUGIN"
+  options = [
+    {
+      option_name = "MARIADB_AUDIT_PLUGIN"
 
-  #     option_settings = [
-  #       {
-  #         name  = "SERVER_AUDIT_EVENTS"
-  #         value = "CONNECT"
-  #       },
-  #       {
-  #         name  = "SERVER_AUDIT_FILE_ROTATIONS"
-  #         value = "37"
-  #       },
-  #     ]
-  #   },
-  # ]
+      option_settings = [
+        {
+          name  = "SERVER_AUDIT_EVENTS"
+          value = "CONNECT"
+        },
+        {
+          name  = "SERVER_AUDIT_FILE_ROTATIONS"
+          value = "37"
+        },
+      ]
+    },
+  ]
  
 }
 
