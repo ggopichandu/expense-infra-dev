@@ -186,7 +186,7 @@ resource "aws_security_group_rule" "frontend_vpn" {
   source_security_group_id = module.vpn.sg_id # source is where you are getting traffic from
   security_group_id = module.frontend.sg_id
 }
-
+# web alb accepting connections from public
 resource "aws_security_group_rule" "web_alb_public" {
   type              = "ingress"
   from_port         = 80
@@ -195,7 +195,7 @@ resource "aws_security_group_rule" "web_alb_public" {
   cidr_blocks = ["0.0.0.0/0"]
   security_group_id = module.web_alb.sg_id
 }
-
+# web alb accepting connections from https
 resource "aws_security_group_rule" "web_alb_public_https" {
   type              = "ingress"
   from_port         = 443
@@ -204,7 +204,7 @@ resource "aws_security_group_rule" "web_alb_public_https" {
   cidr_blocks = ["0.0.0.0/0"]
   security_group_id = module.web_alb.sg_id
 }
-
+# bastion accepting connections from public
 resource "aws_security_group_rule" "bastion_public" {
   type              = "ingress"
   from_port         = 22
@@ -212,6 +212,15 @@ resource "aws_security_group_rule" "bastion_public" {
   protocol          = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
   security_group_id = module.bastion.sg_id
+}
+# frontend accepting connections from public
+resource "aws_security_group_rule" "frontend_public" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = module.frontend.sg_id
 }
 
 # Added as a part of Jenkins CICD
